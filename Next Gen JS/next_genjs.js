@@ -97,3 +97,46 @@ myMethod(){.....}
 myMethod=()=>{......}
 
 //___________________________________The Spread and Rest Operator_________________________
+
+//The 'spread' and 'rest' operator is used by this symbol '...'
+//The spread operator is used to split up array elements OR object properties
+
+const oldArray = [1, 2, 3, 4, 5];
+const newArray = [...oldArray, 6, 7, 8];
+console.log(newArray);
+
+const oldObject = {
+  number: 6,
+  name: "Jojo",
+  age: 21
+};
+
+const newObject = {
+  ...oldObject,
+  newProp: "I got you bro"
+};
+console.log(newObject);
+
+//rest is used to merge a list of function arguments in an array
+//rest is not used very often
+const filter = (...args) => {
+  return args.filter(e1 => e1 === 1);
+};
+
+console.log(filter(1, 2, 3));
+
+//_________________________________Destructuring_________________________________
+
+//Easily ectract array elements or object properties and store them  in variables
+
+//Array Destructuring
+const numbers = [1, 2, 3];
+[num1, num2] = numbers;
+console.log(num1, num2);
+
+//Mapping Functions (Not new Concept though)
+
+const doubleNumArray = numbers.map(num => {
+  return num * 2;
+});
+console.log(doubleNumArray);
