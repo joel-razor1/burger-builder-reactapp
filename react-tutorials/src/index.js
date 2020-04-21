@@ -4,10 +4,10 @@ import "./index.css";
 import App from "./App";
 import Apphooks from "./AppUsingHooks";
 import * as serviceWorker from "./serviceWorker";
-
+import AppDynamic from "./AppDynamic";
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppDynamic />
   </React.StrictMode>,
   document.getElementById("root")
 );
