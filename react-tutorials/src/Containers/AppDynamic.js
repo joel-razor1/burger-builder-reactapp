@@ -3,15 +3,29 @@ import "./App.css";
 import Persons from "../Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 class App extends Component {
-  state = {
-    persons: [
-      { name: "Max", age: 20 },
-      { name: "Mueller", age: 22 },
-      { name: "Kunal", age: 23 }
-    ],
-    showPersons: false
-  };
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+    this.state = {
+      persons: [
+        { name: "Max", age: 20 },
+        { name: "Mueller", age: 22 },
+        { name: "Kunal", age: 23 }
+      ],
+      showPersons: false
+    };
+  }
 
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+  componentWillMount() {
+    console.log("[App.js] componentWillMount");
+  }
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
   switchNameHandler = () => {
     // console.log("Was Clicked");
     // this.state.person[0].name="jksjdssdsd"; Don't do this
@@ -43,6 +57,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("[App.js] render");
     let personsval = null;
     if (this.state.showPersons) {
       personsval = (

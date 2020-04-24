@@ -2,6 +2,7 @@ import React from "react";
 
 //This is how you create a Functional Component
 const person = props => {
+  console.log("[Person.js] rendering.....");
   return (
     <div>
       <p onClick={props.click}>
