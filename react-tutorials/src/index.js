@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
-import Apphooks from "./AppUsingHooks";
+import App from "./Containers/App";
+import Apphooks from "./Containers/AppUsingHooks";
 import * as serviceWorker from "./serviceWorker";
-import AppDynamic from "./AppDynamic";
+import AppDynamic from "./Containers/AppDynamic";
 ReactDOM.render(
   <React.StrictMode>
     <AppDynamic />

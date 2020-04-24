@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
-import Person from "./Person/Person";
+import Persons from "../Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 class App extends Component {
   state = {
     persons: [
       { name: "Max", age: 20 },
       { name: "Mueller", age: 22 },
       { name: "Kunal", age: 23 }
-    ]
+    ],
+    showPersons: false
   };
 
   switchNameHandler = () => {
@@ -30,36 +32,41 @@ class App extends Component {
       ]
     });
   };
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
+  };
+  deletePersonHandler = personIndex => {
+    const persons = this.state.persons.slice();
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons });
+  };
+
   render() {
+    let personsval = null;
+    if (this.state.showPersons) {
+      personsval = (
+        <div>
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
-        <h1>I am a React App</h1>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <Cockpit
+          showPersons={this.state.showPersons}
+          perosns={this.state.persons}
+          clicked={this.togglePersonHandler}
+        />
         {/* don't */}
         {/* use switchNameHandler() as it will be called as soon as the page */}
         {/* renders. So we just have to pass a reference. So simply just type in the */}
         {/* name. */}
-
-        <Person name="Joel" age="21">
-          dsds
-        </Person>
-        <Person name="Judith" age="24" />
-        <Person name="Juliet" age="50" />
-        <Person name="Johnson" age="51" />
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-        />
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-          click={this.switchNameHandler}
-          // changed={this.nameChangedHandler}
-        />
+        {personsval}
       </div>
     );
   }
